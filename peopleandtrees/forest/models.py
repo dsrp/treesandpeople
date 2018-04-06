@@ -13,29 +13,83 @@ class NamedModel(models.Model):
 
 
 class Product(NamedModel):
-    price = models.FloatField(
-        help_text=_('Market sales price per metric ton.')
-    )
+    pass
 
 
 class Species(NamedModel):
     plants_per_area = models.FloatField(
         help_text=_('Per square meter.')
     )
+    # TODO: array field
     labour_per_plant = models.FloatField(
         help_text=_('Hours of labour per plant, per year.')
     )
+    # TODO: array field
+    costs_per_plant = models.FloatField(
+        help_text=_('In Euros per year, including initial costs.')
+    )
 
     products = models.ManyToManyField(Product, through='SpeciesProduct')
+
+    def get_plants_per_area(self):
+        # TODO: return number of plants per surface area
+        pass
+
+    def get_yield_per_area(self):
+        # TODO: return yield per surface area, as array, per year
+        pass
+
+    def get_costs_per_area(self):
+        # TODO: return total costs per surface area, per year
+        pass
+
+    def get_gains_per_area(self):
+        # TODO: return total gains per surface area, per year
+        pass
+
+    def get_labour_per_area(self):
+        # TODO: return total labour per surface area, per year
+        pass
 
 
 class SpeciesProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
 
+    # TODO: array field
     yield_per_plant = models.FloatField(
         help_text=_('In metric tons per year.')
     )
+
+    # TODO: array field
+    labour_per_plant = models.FloatField(
+        help_text=_('In hours per year.')
+    )
+
+    # TODO: array field
+    costs_per_plant = models.FloatField(
+        help_text=_('In Euros per year.')
+    )
+
+    price = models.FloatField(
+        help_text=_('Sales price per metric ton.')
+    )
+
+    def get_yield_per_plant(self):
+        # TODO: return yield per surface area, as array, per year
+        pass
+
+    def get_costs_per_plant(self):
+        # TODO: return total costs per surface area, per year
+        pass
+
+    def get_gains_per_plant(self):
+        # TODO: return total gains per surface area, per year
+        pass
+
+    def get_labour_per_plant(self):
+        # TODO: return total labour per surface area, per year
+        pass
 
     class Meta:
         verbose_name = _('product')
@@ -55,9 +109,33 @@ class CultureSpecies(models.Model):
         # TODO: Validate value > 0.0 and <= 1.0
     )
 
+    def get_plants_per_area(self):
+        # TODO: return number of plants per surface area
+        pass
+
 
 class Forest(NamedModel):
     cultures = models.ManyToManyField(Culture, through='ForestCulture')
+
+    def get_area(self):
+        # TODO: Return total area
+        pass
+
+    def get_yield(self):
+        # TODO: return total yield, as array, per year
+        pass
+
+    def get_costs(self):
+        # TODO: return total costs, per year
+        pass
+
+    def get_gains(self):
+        # TODO: return total gains, per year
+        pass
+
+    def get_labour(self):
+        # TODO
+        pass
 
 
 class ForestCulture(models.Model):
@@ -66,6 +144,26 @@ class ForestCulture(models.Model):
 
     area = models.FloatField()
 
+    def get_area(self):
+        # TODO: Return total area
+        pass
+
+    def get_yield(self):
+        # TODO: return total yield, as array, per year
+        pass
+
+    def get_costs(self):
+        # TODO: return total costs, per year
+        pass
+
+    def get_gains(self):
+        # TODO: return total gains, per year
+        pass
+
+    def get_labour(self):
+        # TODO
+        pass
+
 
 class Project(NamedModel):
     forests = models.ManyToManyField(Forest)
@@ -73,3 +171,31 @@ class Project(NamedModel):
     labour_price = models.FloatField(
         help_text=_('Labour price in Euros per hour.')
     )
+
+    def get_area(self):
+        # TODO: Return total area
+        pass
+
+    def get_yield(self):
+        # TODO: return total yield, as array, per year
+        pass
+
+    def get_costs(self):
+        # TODO: return total costs, per year
+        pass
+
+    def get_gains(self):
+        # TODO: return total gains, per year
+        pass
+
+    def get_labour(self):
+        # TODO
+        pass
+
+    def get_labour_costs(self):
+        # TODO
+        pass
+
+    def get_costbenefit(self):
+        # TODO: return benefits minus costs, per year
+        pass
