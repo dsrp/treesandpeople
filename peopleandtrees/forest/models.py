@@ -18,15 +18,15 @@ class Product(NamedModel):
 
 class Species(NamedModel):
     plants_per_area = models.FloatField(
-        help_text=_('Per square meter.')
+        help_text=_('per square meter')
     )
     # TODO: array field
     labour_per_plant = models.FloatField(
-        help_text=_('Hours of labour per plant, per year.')
+        help_text=_('hours per year')
     )
     # TODO: array field
     costs_per_plant = models.FloatField(
-        help_text=_('In Euros per year, including initial costs.')
+        help_text=_('€ per year, including initial costs')
     )
 
     products = models.ManyToManyField(Product, through='SpeciesProduct')
@@ -58,21 +58,21 @@ class SpeciesProduct(models.Model):
 
     # TODO: array field
     yield_per_plant = models.FloatField(
-        help_text=_('In metric tons per year.')
+        help_text=_('metric tons per year')
     )
 
     # TODO: array field
     labour_per_plant = models.FloatField(
-        help_text=_('In hours per year.')
+        help_text=_('hours per year')
     )
 
     # TODO: array field
     costs_per_plant = models.FloatField(
-        help_text=_('In Euros per year.')
+        help_text=_('€ per year')
     )
 
     price = models.FloatField(
-        help_text=_('Sales price per metric ton.')
+        help_text=_('sales price per metric ton')
     )
 
     def get_yield_per_plant(self):
@@ -105,7 +105,7 @@ class CultureSpecies(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
 
     ratio = models.FloatField(
-        help_text=_('Fraction of monoculture equivalent for this species.')
+        help_text=_('fraction, monoculture equivalent')
         # TODO: Validate value > 0.0 and <= 1.0
     )
 
@@ -169,7 +169,7 @@ class Project(NamedModel):
     forests = models.ManyToManyField(Forest)
 
     labour_price = models.FloatField(
-        help_text=_('Labour price in Euros per hour.')
+        help_text=_('€ per hour')
     )
 
     def get_area(self):
