@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import (
     Species, SpeciesProduct, Product,
-    Culture, CultureSpecies, Forest, ForestCulture
+    Culture, CultureSpecies, Forest, ForestCulture, Project
 )
 
 
@@ -42,3 +42,8 @@ class ForestAdmin(admin.ModelAdmin):
     inlines = [
         ForestCultureInline
     ]
+
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    pass

@@ -65,3 +65,11 @@ class ForestCulture(models.Model):
     forest = models.ForeignKey(Forest, on_delete=models.CASCADE)
 
     area = models.FloatField()
+
+
+class Project(NamedMixin):
+    forests = models.ManyToManyField(Forest)
+
+    labour_price = models.FloatField(
+        help_text=_('Labour price in Euros per hour.')
+    )
