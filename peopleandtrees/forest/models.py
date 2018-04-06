@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class NamedMixin(models.Model):
+class NamedModel(models.Model):
     name = models.CharField(max_length=128)
 
     def __str__(self):
@@ -12,13 +12,13 @@ class NamedMixin(models.Model):
         abstract = True
 
 
-class Product(NamedMixin):
+class Product(NamedModel):
     price = models.FloatField(
         help_text=_('Market sales price per metric ton.')
     )
 
 
-class Species(NamedMixin):
+class Species(NamedModel):
     plants_per_area = models.FloatField(
         help_text=_('Per square meter.')
     )
@@ -42,7 +42,7 @@ class SpeciesProduct(models.Model):
         verbose_name_plural = _('products')
 
 
-class Culture(NamedMixin):
+class Culture(NamedModel):
     species = models.ManyToManyField(Species, through='CultureSpecies')
 
 
@@ -56,7 +56,7 @@ class CultureSpecies(models.Model):
     )
 
 
-class Forest(NamedMixin):
+class Forest(NamedModel):
     cultures = models.ManyToManyField(Culture, through='ForestCulture')
 
 
@@ -67,7 +67,7 @@ class ForestCulture(models.Model):
     area = models.FloatField()
 
 
-class Project(NamedMixin):
+class Project(NamedModel):
     forests = models.ManyToManyField(Forest)
 
     labour_price = models.FloatField(
