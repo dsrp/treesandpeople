@@ -1,15 +1,29 @@
 from django.contrib import admin
 
-from .models import Species, Culture, CultureSpecies, Forest, ForestCulture
+from .models import (
+    Species, SpeciesProduct, Product,
+    Culture, CultureSpecies, Forest, ForestCulture
+)
 
 
-class CultureSpeciesInline(admin.TabularInline):
-    model = CultureSpecies
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    pass
+
+
+class SpeciesProductInline(admin.TabularInline):
+    model = SpeciesProduct
 
 
 @admin.register(Species)
 class SpeciesAdmin(admin.ModelAdmin):
-    pass
+    inlines = [
+        SpeciesProductInline
+    ]
+
+
+class CultureSpeciesInline(admin.TabularInline):
+    model = CultureSpecies
 
 
 @admin.register(Culture)
