@@ -89,6 +89,9 @@ class SpeciesProduct(models.Model):
         # TODO: return total labour per surface area, per year
         pass
 
+    def __str__(self):
+        return self.product.name
+
     class Meta:
         verbose_name = _('product')
         verbose_name_plural = _('products')
@@ -110,6 +113,9 @@ class CultureSpecies(models.Model):
     def get_plants_per_area(self):
         # TODO: return number of plants per surface area
         pass
+
+    def __str__(self):
+        return self.species.name
 
 
 class Forest(NamedModel):
@@ -161,6 +167,9 @@ class ForestCulture(models.Model):
     def get_labour(self):
         # TODO
         pass
+
+    def __str__(self):
+        return self.culture.name
 
 
 class Project(NamedModel):
