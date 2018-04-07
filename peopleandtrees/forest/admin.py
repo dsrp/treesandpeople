@@ -5,8 +5,10 @@ from .models import (
     Culture, CultureSpecies, Forest, ForestCulture, Project
 )
 
+from .forms import SpeciesForm, SpeciesProductForm
 
-class InlineBase(admin.TabularInline):
+
+class InlineBase(admin.StackedInline):
     min_num = 0
     # Note: for some reason, extra > 0 gives "This field is required." for all
     # fields of the inline - making it effectively a required value.
@@ -20,6 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 class SpeciesProductInline(InlineBase):
     model = SpeciesProduct
+    form = SpeciesProductForm
 
 
 @admin.register(Species)
@@ -27,6 +30,8 @@ class SpeciesAdmin(admin.ModelAdmin):
     inlines = [
         SpeciesProductInline
     ]
+
+    form = SpeciesForm
 
 
 class CultureSpeciesInline(InlineBase):

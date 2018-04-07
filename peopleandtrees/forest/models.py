@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.postgres.fields import ArrayField
 
 
 class NamedModel(models.Model):
@@ -20,14 +21,14 @@ class Species(NamedModel):
     plants_per_area = models.FloatField(
         help_text=_('per square meter')
     )
-    # TODO: array field
-    labour_per_plant = models.FloatField(
+
+    # Yearly numbers
+    labour_per_plant = ArrayField(models.FloatField(
         help_text=_('hours per year')
-    )
-    # TODO: array field
-    costs_per_plant = models.FloatField(
+    ), size=10)
+    costs_per_plant = ArrayField(models.FloatField(
         help_text=_('€ per year, including initial costs')
-    )
+    ), size=10)
 
     products = models.ManyToManyField(Product, through='SpeciesProduct')
 
@@ -56,20 +57,16 @@ class SpeciesProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
 
-    # TODO: array field
-    yield_per_plant = models.FloatField(
+    # Yearly numbers
+    yield_per_plant = ArrayField(models.FloatField(
         help_text=_('metric tons per year')
-    )
-
-    # TODO: array field
-    labour_per_plant = models.FloatField(
+    ), size=10)
+    labour_per_plant = ArrayField(models.FloatField(
         help_text=_('hours per year')
-    )
-
-    # TODO: array field
-    costs_per_plant = models.FloatField(
+    ), size=10)
+    costs_per_plant = ArrayField(models.FloatField(
         help_text=_('€ per year')
-    )
+    ), size=10)
 
     price = models.FloatField(
         help_text=_('sales price per metric ton')
