@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2b04d71ada9cb0c802d8c79ed12dc9244e29826c3ff21474bfdbf537f06e96b8"
+            "sha256": "08e8b4e08ab4a2a3d6978298e25f15021da0361a508cd4809595644aba9b7416"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "index": "pypi",
             "version": "==2.0.4"
+        },
+        "django-debug-toolbar": {
+            "hashes": [
+                "sha256:4af2a4e1e932dadbda197b18585962d4fc20172b4e5a479490bc659fe998864d",
+                "sha256:d9ea75659f76d8f1e3eb8f390b47fc5bad0908d949c34a8a3c4c87978eb40a0f"
+            ],
+            "index": "pypi",
+            "version": "==1.9.1"
         },
         "django-postgres-extensions": {
             "hashes": [
@@ -78,6 +86,13 @@
                 "sha256:f93ddcdd6342f94cea379c73cddb5724e0d6d0a1c91c9bdef364dc0368ba4fda"
             ],
             "version": "==2018.3"
+        },
+        "sqlparse": {
+            "hashes": [
+                "sha256:ce028444cfab83be538752a2ffdb56bc417b7784ff35bb9a3062413717807dec",
+                "sha256:d9cf190f51cbb26da0412247dfe4fb5f4098edb73db84e02f9fc21fdca31fed4"
+            ],
+            "version": "==0.2.4"
         }
     },
     "develop": {}

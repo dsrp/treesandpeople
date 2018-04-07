@@ -1,0 +1,11 @@
+{% spaceless %}
+    {% for widget in widget.subwidgets %}
+        {% if not forloop.first %}
+            <label {% if widget.required %}class="required"{% endif %}>{{ forloop.counter }}:</label>
+        {% endif %}
+        {% include widget.template_name %}
+        {% if not forloop.last %}
+            <br>
+        {% endif %}
+    {% endfor %}
+{% endspaceless %}
