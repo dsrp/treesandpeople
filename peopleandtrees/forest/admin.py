@@ -6,12 +6,19 @@ from .models import (
 )
 
 
+class InlineBase(admin.TabularInline):
+    min_num = 0
+    # Note: for some reason, extra > 0 gives "This field is required." for all
+    # fields of the inline - making it effectively a required value.
+    extra = 0
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     pass
 
 
-class SpeciesProductInline(admin.TabularInline):
+class SpeciesProductInline(InlineBase):
     model = SpeciesProduct
 
 
@@ -22,7 +29,7 @@ class SpeciesAdmin(admin.ModelAdmin):
     ]
 
 
-class CultureSpeciesInline(admin.TabularInline):
+class CultureSpeciesInline(InlineBase):
     model = CultureSpecies
 
 
@@ -33,7 +40,7 @@ class CultureAdmin(admin.ModelAdmin):
     ]
 
 
-class ForestCultureInline(admin.TabularInline):
+class ForestCultureInline(InlineBase):
     model = ForestCulture
 
 
