@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.contrib.postgres.fields import ArrayField
+
+from django_postgres_extensions.models.fields import ArrayField
 
 
 class NamedModel(models.Model):
@@ -25,10 +26,10 @@ class Species(NamedModel):
     # Yearly numbers
     labour_per_plant = ArrayField(models.FloatField(
         help_text=_('hours per year')
-    ), size=10)
+    ), form_size=10, size=10)
     costs_per_plant = ArrayField(models.FloatField(
         help_text=_('€ per year, including initial costs')
-    ), size=10)
+    ), form_size=10, size=10)
 
     products = models.ManyToManyField(Product, through='SpeciesProduct')
 
@@ -60,13 +61,13 @@ class SpeciesProduct(models.Model):
     # Yearly numbers
     yield_per_plant = ArrayField(models.FloatField(
         help_text=_('metric tons per year')
-    ), size=10)
+    ), form_size=10, size=10)
     labour_per_plant = ArrayField(models.FloatField(
         help_text=_('hours per year')
-    ), size=10)
+    ), form_size=10, size=10)
     costs_per_plant = ArrayField(models.FloatField(
         help_text=_('€ per year')
-    ), size=10)
+    ), form_size=10, size=10)
 
     price = models.FloatField(
         help_text=_('sales price per metric ton')

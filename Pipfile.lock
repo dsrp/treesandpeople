@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e172be9da632c636d9a1b82cd64b4b2587524b6640d88d1bfdcdb1d790843434"
+            "sha256": "2b04d71ada9cb0c802d8c79ed12dc9244e29826c3ff21474bfdbf537f06e96b8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "index": "pypi",
             "version": "==2.0.4"
+        },
+        "django-postgres-extensions": {
+            "hashes": [
+                "sha256:0dc14112dfc898eeeda5c72bd3013ec34a6fe8769965b56a962fa2cc862983d3",
+                "sha256:902d333a012a15aa01798f0f670c68ee730f0ee73b507801301dda98032dc2e5"
+            ],
+            "index": "pypi",
+            "version": "==0.9.3"
         },
         "psycopg2": {
             "hashes": [

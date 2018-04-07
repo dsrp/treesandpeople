@@ -5,8 +5,6 @@ from .models import (
     Culture, CultureSpecies, Forest, ForestCulture, Project
 )
 
-from .forms import SpeciesForm, SpeciesProductForm
-
 
 class InlineBase(admin.StackedInline):
     min_num = 0
@@ -22,7 +20,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 class SpeciesProductInline(InlineBase):
     model = SpeciesProduct
-    form = SpeciesProductForm
 
 
 @admin.register(Species)
@@ -30,8 +27,6 @@ class SpeciesAdmin(admin.ModelAdmin):
     inlines = [
         SpeciesProductInline
     ]
-
-    form = SpeciesForm
 
 
 class CultureSpeciesInline(InlineBase):
