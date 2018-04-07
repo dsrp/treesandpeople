@@ -146,7 +146,7 @@ class ForestCulture(models.Model):
     culture = models.ForeignKey(Culture, on_delete=models.CASCADE)
     forest = models.ForeignKey(Forest, on_delete=models.CASCADE)
 
-    area = models.FloatField()
+    area = models.FloatField(help_text=_('square meter'))
 
     def get_area(self):
         # TODO: Return total area
