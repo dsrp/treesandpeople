@@ -12,7 +12,13 @@ This is a standard Django 2 project, using pipenv to manage dependencies.
 1. Clone the project with Git: `git clone https://github.com/dsrp/peopleandtrees.git`
 2. Install project dependencies: `pipenv install` (from project directory)
 3. Activate environment: `pipenv shell`
-4. [Setup the Postgres database](https://tutorial-extensions.djangogirls.org/en/optional_postgresql_installation/)
+4. Create Postgres user and database:
+   ```shell
+   $ createuser peopleandtrees
+   $ createdb -O peopleandtrees -E UTF-8 peopleandtrees
+   ```
+
+   Warning: in production SET A PASSWORD!
 5. (Temporarily) create migrations: `peopleandtrees/manage.py makemigrations`
 6. Populate the database: `peopleandtrees/manage.py migrate`
 7. Create superuser admin account: `peopleandtrees/manage.py createsuperuser`
