@@ -1,0 +1,42 @@
+digraph {
+    SpeciesProduction -> Product;
+    ProjectService -> Service;
+
+    Project -> Garden;
+    ProjectMaterial -> Material;
+
+    SpeciesTask -> Task;
+    ProjectTask -> Task;
+
+    subgraph cluster_0 {
+        Product -> ProductType;
+    }
+
+    subgraph cluster_1 {
+        Task -> TaskType;
+    }
+
+    subgraph cluster_2 {
+        Material -> MaterialType;
+    }
+
+    subgraph cluster_3 {
+        Polyculture -> Species;
+        Garden -> Polyculture;
+
+        Species -> SpeciesMaterial;
+        Species -> SpeciesProduction;
+        SpeciesMaterial -> Material;
+        Species -> SpeciesTask;
+    }
+
+    subgraph cluster_4 {
+        Project -> ProjectTask;
+        Project -> ProjectService;
+        Project -> ProjectMaterial;
+    }
+
+    subgraph cluster_5 {
+        Service -> ServiceType;
+    }
+}
