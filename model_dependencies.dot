@@ -1,42 +1,55 @@
 digraph {
-    SpeciesProduction -> Product;
-    ProjectService -> Service;
-
     Project -> Garden;
-    ProjectMaterial -> Material;
 
-    SpeciesTask -> Task;
-    ProjectTask -> Task;
+    Product -> ProductType;
+
+    Task -> TaskType;
+
+    Polyculture -> Species;
+    Garden -> Polyculture;
+
+    Species -> Production;
+    Species -> Task;
+    Species -> Costs;
+
+    Project -> Task;
+    Project -> Costs;
+    Project -> Production;
+    Project -> Costs;
+
+    Garden -> Production;
+    Garden -> Costs;
+
+    Production -> Product;
+
+    Costs -> CostType;
+    TaskType -> Costs;
 
     subgraph cluster_0 {
-        Product -> ProductType;
+        Production;
+        Product; ProductType;
     }
 
     subgraph cluster_1 {
-        Task -> TaskType;
-    }
-
-    subgraph cluster_2 {
-        Material -> MaterialType;
+        Task; TaskType;
     }
 
     subgraph cluster_3 {
-        Polyculture -> Species;
-        Garden -> Polyculture;
-
-        Species -> SpeciesMaterial;
-        Species -> SpeciesProduction;
-        SpeciesMaterial -> Material;
-        Species -> SpeciesTask;
     }
 
     subgraph cluster_4 {
-        Project -> ProjectTask;
-        Project -> ProjectService;
-        Project -> ProjectMaterial;
+        Project;
     }
 
     subgraph cluster_5 {
-        Service -> ServiceType;
+        Costs; CostType;
+    }
+
+    subgraph cluster_6 {
+        Garden; Polyculture;
+    }
+
+    subgraph cluster_7 {
+        Species;
     }
 }
