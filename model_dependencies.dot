@@ -1,4 +1,6 @@
 digraph {
+    newrank=true;
+
     Project -> Garden;
 
     Product -> ProductType;
@@ -8,17 +10,17 @@ digraph {
     Polyculture -> Species;
     Garden -> Polyculture;
 
-    Species -> Production;
-    Species -> Task;
-    Species -> Costs;
+    Species -> SpeciesProduction -> Production;
+    Species -> SpeciesTask -> Task;
+    Species -> SpeciesCosts -> Costs;
 
-    Project -> Task;
-    Project -> Costs;
-    Project -> Production;
-    Project -> Costs;
+    Project -> ProjectTask -> Task;
+    Project -> ProjectCosts -> Costs;
+    Project -> ProjectProduction -> Production;
 
-    Garden -> Production;
-    Garden -> Costs;
+    Garden -> GardenProduction -> Production;
+    Garden -> GardenCosts -> Costs;
+    Garden -> GardenTask -> Task;
 
     Production -> Product;
 
@@ -26,8 +28,7 @@ digraph {
     TaskType -> Costs;
 
     subgraph cluster_0 {
-        Production;
-        Product; ProductType;
+        Production; Product; ProductType;
     }
 
     subgraph cluster_1 {
@@ -38,7 +39,7 @@ digraph {
     }
 
     subgraph cluster_4 {
-        Project;
+        Project; ProjectTask; ProjectCosts; ProjectProduction;
     }
 
     subgraph cluster_5 {
@@ -46,10 +47,16 @@ digraph {
     }
 
     subgraph cluster_6 {
-        Garden; Polyculture;
+        Garden; Polyculture; GardenTask; GardenCosts; GardenProduction;
     }
 
     subgraph cluster_7 {
-        Species;
+        Species; SpeciesTask; SpeciesCosts; SpeciesProduction;
     }
+
+    { rank=same; Production; Task; Costs; }
+
+    { rank=same; ProjectTask; ProjectCosts; ProjectProduction; }
+
+    { rank=same; GardenTask; GardenCosts; GardenProduction; }
 }
