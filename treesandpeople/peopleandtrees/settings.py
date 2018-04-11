@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     # treesandpeople-specific
     'base',
     'culture',
-    # 'forest',
     'garden',
     'product',
     'project',
