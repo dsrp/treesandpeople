@@ -17,7 +17,7 @@ class YearBase(models.Model):
     class Meta:
         abstract = True
 
-    year = models.IntegerField()
+    year = models.IntegerField(db_index=True)
 
 
 class CostBase(YearBase):

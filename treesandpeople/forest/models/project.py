@@ -21,6 +21,9 @@ class ProjectBase(models.Model):
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.project)
+
 
 class ProjectCosts(ProjectBase, CostBase):
     pass

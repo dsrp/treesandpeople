@@ -17,6 +17,9 @@ class GardenBase(models.Model):
 
     garden = models.ForeignKey(Garden, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.garden)
+
 
 class GardenCulture(GardenBase, CultureBase):
     area = models.FloatField(help_text=_('square meter'))

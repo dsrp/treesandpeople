@@ -18,6 +18,9 @@ class SpeciesBase(models.Model):
 
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.species)
+
 
 class SpeciesCosts(SpeciesBase, CostBase):
     pass

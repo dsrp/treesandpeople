@@ -17,12 +17,12 @@ class CultureBase(models.Model):
 
     culture = models.ForeignKey(Culture, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.culture)
+
 
 class CultureSpecies(CultureBase, SpeciesBase):
     ratio = models.FloatField(
         help_text=_('fraction, monoculture equivalent')
         # TODO: Validate value > 0.0 and <= 1.0
     )
-
-    def __str__(self):
-        return self.species.name

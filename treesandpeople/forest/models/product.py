@@ -9,8 +9,10 @@ class ProductType(NamedBase):
 
 
 class Product(NamedBase):
-    # TODO: This should *NOT* cascade but to be set null instead.
-    product_type = models.ForeignKey(ProductType, verbose_name=_('type'), on_delete=models.CASCADE)
+    product_type = models.ForeignKey(
+        ProductType, verbose_name=_('type'),
+        null=True, on_delete=models.SET_NULL
+    )
 
 
 class ProductBase(models.Model):
@@ -19,7 +21,10 @@ class ProductBase(models.Model):
     class Meta:
         abstract = True
 
-    poduct = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.product)
 
 
 class ProductCosts(ProductBase, CostBase):
