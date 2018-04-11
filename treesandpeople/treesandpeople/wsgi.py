@@ -1,5 +1,5 @@
 """
-WSGI config for peopleandtrees project.
+WSGI config for treesandpeople project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "peopleandtrees.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "treesandpeople.settings")
 
 application = get_wsgi_application()
