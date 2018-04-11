@@ -20,6 +20,13 @@ class YearBase(models.Model):
     year = models.IntegerField(db_index=True)
 
 
+class CategoryBase(NamedBase):
+    """ Abstract base class for categories. """
+
+    class Meta:
+        abstract = True
+
+
 class CostBase(YearBase):
     class Meta:
         abstract = True

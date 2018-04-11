@@ -1,16 +1,18 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from base.models import NamedBase, CostBase, TaskBase, ProductionBase
+from base.models import (
+    NamedBase, CostBase, TaskBase, ProductionBase, CategoryBase
+)
 
 
-class ProductType(NamedBase):
+class ProductCategory(CategoryBase):
     pass
 
 
 class Product(NamedBase):
-    product_type = models.ForeignKey(
-        ProductType, verbose_name=_('type'),
+    category = models.ForeignKey(
+        ProductCategory, verbose_name=_('category'),
         null=True, on_delete=models.SET_NULL
     )
 
@@ -25,14 +27,6 @@ class ProductBase(models.Model):
 
     def __str__(self):
         return str(self.product)
-
-
-class ProductCosts(ProductBase, CostBase):
-    pass
-
-
-class ProductTask(ProductBase, TaskBase):
-    pass
 
 
 class ProductProduction(ProductBase, ProductionBase):

@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from base.models import NamedBase, CostBase, TaskBase, ProductionBase
+from base.models import (
+    NamedBase, CostBase, TaskBase, ProductionBase, CategoryBase
+)
 
 
 class Species(NamedBase):
@@ -22,12 +24,24 @@ class SpeciesBase(models.Model):
         return str(self.species)
 
 
+class SpeciesCostsCategory(CategoryBase):
+    pass
+
+
 class SpeciesCosts(SpeciesBase, CostBase):
+    category = models.ForeignKey(
+        SpeciesCostsCategory, on_delete=models.SET_NULL, null=True
+    )
+
+
+class SpeciesTaskCategory(CategoryBase):
     pass
 
 
 class SpeciesTask(SpeciesBase, TaskBase):
-    pass
+    category = models.ForeignKey(
+        SpeciesTaskCategory, on_delete=models.SET_NULL, null=True
+    )
 
 
 class SpeciesProduction(SpeciesBase, ProductionBase):

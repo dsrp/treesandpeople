@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from base.models import NamedBase, CostBase, TaskBase, ProductionBase
+from base.models import (
+    NamedBase, CostBase, TaskBase, ProductionBase, CategoryBase
+)
 from culture.models import CultureBase, Culture
 
 
@@ -25,12 +27,24 @@ class GardenCulture(GardenBase, CultureBase):
     area = models.FloatField(help_text=_('square meter'))
 
 
+class GardenCostsCategory(CategoryBase):
+    pass
+
+
 class GardenCosts(GardenBase, CostBase):
+    category = models.ForeignKey(
+        GardenCostsCategory, on_delete=models.SET_NULL, null=True
+    )
+
+
+class GardenTaskCategory(CategoryBase):
     pass
 
 
 class GardenTask(GardenBase, TaskBase):
-    pass
+    category = models.ForeignKey(
+        GardenTaskCategory, on_delete=models.SET_NULL, null=True
+    )
 
 
 class GardenProduction(GardenBase, ProductionBase):
