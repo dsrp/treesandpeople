@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class NamedBase(models.Model):
@@ -11,13 +12,21 @@ class NamedBase(models.Model):
         return self.name
 
 
-class YearBase(models.Model):
-    """ Base model for elements relating to a year. """
+class CategorizedYearBase(models.Model):
+    """
+    Base model for elements relating to a year, having a category field.
+    """
 
     class Meta:
         abstract = True
 
     year = models.IntegerField(db_index=True)
+
+    def __str__(self):
+        print('lalalalals')
+        assert hasattr(self, 'category')
+
+        return '{0} - year {1}'.format(str(self.category), self.year)
 
 
 class CategoryBase(NamedBase):
@@ -27,16 +36,16 @@ class CategoryBase(NamedBase):
         abstract = True
 
 
-class CostBase(YearBase):
+class CostBase(CategorizedYearBase):
     class Meta:
         abstract = True
 
 
-class TaskBase(YearBase):
+class TaskBase(CategorizedYearBase):
     class Meta:
         abstract = True
 
 
-class ProductionBase(YearBase):
+class ProductionBase(CategorizedYearBase):
     class Meta:
         abstract = True

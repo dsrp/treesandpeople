@@ -28,10 +28,16 @@ class GardenCulture(GardenBase, CultureBase):
 
 
 class GardenCostsCategory(CategoryBase):
-    pass
+    class Meta:
+        verbose_name = _('cost category')
+        verbose_name_plural = _('cost categories')
 
 
-class GardenCosts(GardenBase, CostBase):
+class GardenCosts(CostBase, GardenBase):
+    class Meta:
+        verbose_name = _('cost')
+        verbose_name_plural = _('costs')
+
     category = models.ForeignKey(
         GardenCostsCategory, on_delete=models.SET_NULL, null=True
     )
@@ -41,11 +47,11 @@ class GardenTaskCategory(CategoryBase):
     pass
 
 
-class GardenTask(GardenBase, TaskBase):
+class GardenTask(TaskBase, GardenBase):
     category = models.ForeignKey(
         GardenTaskCategory, on_delete=models.SET_NULL, null=True
     )
 
 
-class GardenProduction(GardenBase, ProductionBase):
+class GardenProduction(ProductionBase, GardenBase):
     pass
