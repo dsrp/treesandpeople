@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .base import NamedBase, CostBase, TaskBase, ProductionBase
-from .culture import CultureBase, Culture
+from base.models import NamedBase, CostBase, TaskBase, ProductionBase
+from culture.models import CultureBase, Culture
 
 
 class Garden(NamedBase):

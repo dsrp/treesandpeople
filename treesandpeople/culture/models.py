@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .base import NamedBase
-from .species import SpeciesBase, Species
+from base.models import NamedBase
+from species.models import SpeciesBase, Species
 
 
 class Culture(NamedBase):

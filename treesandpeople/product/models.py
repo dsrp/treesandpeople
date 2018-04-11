@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .base import NamedBase, CostBase, TaskBase, ProductionBase
+from base.models import NamedBase, CostBase, TaskBase, ProductionBase
 
 
 class ProductType(NamedBase):

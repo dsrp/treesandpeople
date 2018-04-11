@@ -41,7 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'debug_toolbar',
     'django_extensions',
-    'forest'
+
+    # treesandpeople-specific
+    'base',
+    'culture',
+    # 'forest',
+    'garden',
+    'product',
+    'project',
+    'species',
 ]
 
 MIDDLEWARE = [
