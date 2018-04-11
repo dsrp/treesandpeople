@@ -31,7 +31,7 @@ class ProjectCostsCategory(CategoryBase):
     pass
 
 
-class ProjectCosts(ProjectBase, CostBase):
+class ProjectCosts(CostBase, ProjectBase):
     category = models.ForeignKey(
         ProjectCostsCategory, on_delete=models.SET_NULL, null=True
     )
@@ -41,11 +41,11 @@ class ProjectTaskCategory(CategoryBase):
     pass
 
 
-class ProjectTask(ProjectBase, TaskBase):
+class ProjectTask(TaskBase, ProjectBase):
     category = models.ForeignKey(
         ProjectTaskCategory, on_delete=models.SET_NULL, null=True
     )
 
 
-class ProjectProduction(ProjectBase, ProductionBase):
+class ProjectProduction(ProductionBase, ProjectBase):
     pass

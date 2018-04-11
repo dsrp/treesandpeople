@@ -28,7 +28,7 @@ class SpeciesCostsCategory(CategoryBase):
     pass
 
 
-class SpeciesCosts(SpeciesBase, CostBase):
+class SpeciesCosts(CostBase, SpeciesBase):
     category = models.ForeignKey(
         SpeciesCostsCategory, on_delete=models.SET_NULL, null=True
     )
@@ -38,11 +38,11 @@ class SpeciesTaskCategory(CategoryBase):
     pass
 
 
-class SpeciesTask(SpeciesBase, TaskBase):
+class SpeciesTask(TaskBase, SpeciesBase):
     category = models.ForeignKey(
         SpeciesTaskCategory, on_delete=models.SET_NULL, null=True
     )
 
 
-class SpeciesProduction(SpeciesBase, ProductionBase):
+class SpeciesProduction(ProductionBase, SpeciesBase):
     pass
