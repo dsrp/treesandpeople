@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import (
-    NamedBase, CostBase, TaskBase, ProductionBase, CategoryBase
+    NamedBase, CostBase, LabourBase, ProductionBase, CategoryBase
 )
 
 

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import (
-    NamedBase, CostBase, TaskBase, ProductionBase, CategoryBase
+    NamedBase, CostBase, LabourBase, ProductionBase, CategoryBase
 )
 
 
@@ -34,13 +34,13 @@ class SpeciesCosts(CostBase, SpeciesBase):
     )
 
 
-class SpeciesTaskCategory(CategoryBase):
+class SpeciesLabourCategory(CategoryBase):
     pass
 
 
-class SpeciesTask(TaskBase, SpeciesBase):
+class SpeciesLabour(LabourBase, SpeciesBase):
     category = models.ForeignKey(
-        SpeciesTaskCategory, on_delete=models.SET_NULL, null=True
+        SpeciesLabourCategory, on_delete=models.SET_NULL, null=True
     )
 
 

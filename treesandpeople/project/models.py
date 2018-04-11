@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import (
-    NamedBase, CostBase, TaskBase, ProductionBase, CategoryBase
+    NamedBase, CostBase, LabourBase, ProductionBase, CategoryBase
 )
 from garden.models import Garden
 
@@ -37,13 +37,13 @@ class ProjectCosts(CostBase, ProjectBase):
     )
 
 
-class ProjectTaskCategory(CategoryBase):
+class ProjectLabourCategory(CategoryBase):
     pass
 
 
-class ProjectTask(TaskBase, ProjectBase):
+class ProjectLabour(LabourBase, ProjectBase):
     category = models.ForeignKey(
-        ProjectTaskCategory, on_delete=models.SET_NULL, null=True
+        ProjectLabourCategory, on_delete=models.SET_NULL, null=True
     )
 
 

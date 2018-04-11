@@ -40,12 +40,18 @@ class CostBase(CategorizedYearBase):
     class Meta:
         abstract = True
 
+    amount = models.FloatField()
 
-class TaskBase(CategorizedYearBase):
+
+class LabourBase(CategorizedYearBase):
     class Meta:
         abstract = True
+
+    amount = models.FloatField()
 
 
 class ProductionBase(CategorizedYearBase):
     class Meta:
         abstract = True
+
+    amount = models.FloatField()

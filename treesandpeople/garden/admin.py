@@ -5,7 +5,7 @@ from base.admin import InlineBase
 from .models import (
     GardenCulture, Garden,
     GardenCostsCategory, GardenCosts,
-    GardenTaskCategory, GardenTask,
+    GardenLabourCategory, GardenLabour,
     GardenProduction
 )
 
@@ -18,8 +18,8 @@ class GardenCostsInline(InlineBase):
     model = GardenCosts
 
 
-class GardenTaskInline(InlineBase):
-    model = GardenTask
+class GardenLabourInline(InlineBase):
+    model = GardenLabour
 
 
 class GardenProductionInline(InlineBase):
@@ -31,7 +31,7 @@ class GardenAdmin(admin.ModelAdmin):
     inlines = [
         GardenCultureInline,
         GardenCostsInline,
-        GardenTaskInline,
+        GardenLabourInline,
         GardenProductionInline
     ]
 
@@ -41,6 +41,6 @@ class GardenCostsCategoyAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(GardenTaskCategory)
-class GardenTaskCategoryAdmin(admin.ModelAdmin):
+@admin.register(GardenLabourCategory)
+class GardenLabourCategoryAdmin(admin.ModelAdmin):
     pass
