@@ -52,7 +52,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
+treesandpeople/treesandpeople/settings/local.py
 
 # Flask stuff:
 instance/
