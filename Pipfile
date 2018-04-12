@@ -10,6 +10,7 @@ django-postgres-extensions = "*"
 django-debug-toolbar = "*"
 django-extensions = "*"
 gunicorn = "*"
+django-environ = "*"
 
 [dev-packages]
 

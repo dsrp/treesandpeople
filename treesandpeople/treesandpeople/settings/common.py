@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+
     'debug_toolbar',
     'django_extensions',
+    'gunicorn',
 
     # treesandpeople-specific
     'base',
