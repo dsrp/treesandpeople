@@ -19,17 +19,17 @@ This is a standard Django 2 project, using pipenv to manage dependencies.
    ```
 
    Warning: in production SET A PASSWORD!
-5. (Temporarily) create migrations: `treesandpeople/manage.py makemigrations`
-6. Populate the database: `treesandpeople/manage.py migrate`
-7. Create superuser admin account: `treesandpeople/manage.py createsuperuser`
-8. Start development server: `treesandpeople/manage.py runserver`
+5. (Temporarily) create migrations: `./manage.py makemigrations`
+6. Populate the database: `./manage.py migrate`
+7. Create superuser admin account: `./manage.py createsuperuser`
+8. Start development server: `./manage.py runserver`
 9. Navigate to `http://127.0.0.1:8000/admin/` and have fun!
 
 ## Updating
 How to fetch changes from upstream.
 
 1. Fetch changes in code: `git pull`
-2. Execute pending migrations: `treesandpeople/manage.py migrate`
+2. Execute pending migrations: `./manage.py migrate`
 
 ## Production
 By default, this project uses [Gunicorn](http://gunicorn.org/), [Whitenoise](http://whitenoise.evans.io/en/stable/index.html) and [django-environ](https://django-environ.readthedocs.io/en/latest/) to deploy, greatly simplifying matters.
