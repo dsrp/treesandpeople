@@ -1,6 +1,6 @@
 import environ
 
-from common import *  # noqa
+from .common import *  # noqa
 
 env = environ.Env()
 
