@@ -39,5 +39,9 @@ You'll have to set the following environment variables:
 * `DJANGO_SECRET_KEY`: generate using `./manage.py generate_secret_key`
 *  `DATABASE_URL`
 
+Collect static files, prepare database:
+`pipenv run ./manage.py migrate`
+`pipenv run ./manage.py collectstatic`
+
 Then, simply run it with:
 `pipenv run gunicorn treesandpeople.wsgi`
