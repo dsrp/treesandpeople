@@ -40,4 +40,4 @@ You'll have to set the following environment variables:
 *  `DATABASE_URL`
 
 Then, simply run it with:
-`gunicorn treesandpeople.wsgi`
+`pipenv run gunicorn treesandpeople.wsgi`
