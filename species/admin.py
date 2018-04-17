@@ -3,15 +3,11 @@ from django.contrib import admin
 from base.admin import InlineBase
 
 from .models import (
-    SpeciesCulture, Species,
+    Species,
     SpeciesCostsCategory, SpeciesCosts,
     SpeciesLabourCategory, SpeciesLabour,
     SpeciesProduction
 )
-
-
-class SpeciesCultureInline(InlineBase):
-    model = SpeciesCulture
 
 
 class SpeciesCostsInline(InlineBase):
@@ -29,7 +25,6 @@ class SpeciesProductionInline(InlineBase):
 @admin.register(Species)
 class SpeciesAdmin(admin.ModelAdmin):
     inlines = [
-        SpeciesCultureInline,
         SpeciesCostsInline,
         SpeciesLabourInline,
         SpeciesProductionInline
