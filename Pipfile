@@ -11,6 +11,8 @@ django-debug-toolbar = "*"
 django-extensions = "*"
 gunicorn = "*"
 django-environ = "*"
+whitenoise = "*"
+brotlipy = "*"
 
 [dev-packages]
 

@@ -2,9 +2,9 @@ import environ
 
 from .common import *  # noqa
 
-env = environ.Env()
+env = environ.Env(DEBUG=(bool, False),) # set default values and casting
 
-DEBUG = False
+DEBUG = env('DEBUG') # False if not in os.environ
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
