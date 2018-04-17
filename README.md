@@ -30,3 +30,14 @@ How to fetch changes from upstream.
 
 1. Fetch changes in code: `git pull`
 2. Execute pending migrations: `treesandpeople/manage.py migrate`
+
+## Production
+By default, this project uses [Gunicorn](http://gunicorn.org/), [Whitenoise](http://whitenoise.evans.io/en/stable/index.html) and [django-environ](https://django-environ.readthedocs.io/en/latest/) to deploy, greatly simplifying matters.
+
+You'll have to set the following environment variables:
+* `DJANGO_SETTINGS_MODULE="treesandpeople.settings.production"`
+* `DJANGO_SECRET_KEY`: generate using `./manage.py generate_secret_key`
+*  `DATABASE_URL`
+
+Then, simply run it with:
+`gunicorn treesandpeople.wsgi`
