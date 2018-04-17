@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import (
-    NamedBase, CostBase, LabourBase, ProductionBase, CategoryBase
+    NamedBase, ProductionBase, CategoryBase
 )
 
 
@@ -30,4 +30,5 @@ class ProductBase(models.Model):
 
 
 class ProductProduction(ProductBase, ProductionBase):
+    # TODO: Add costs, labour and yields pertaining to products from products
     pass
