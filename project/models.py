@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import (
-    NamedBase, CostBase, LabourBase, ProductionBase, CategoryBase
+    NamedBase, CostBase, LabourBase, ProductionBase,
+    CostCategoryBase, LabourCategoryBase
 )
 from garden.models import Garden
 
@@ -27,7 +28,7 @@ class ProjectBase(models.Model):
         return str(self.project)
 
 
-class ProjectCostsCategory(CategoryBase):
+class ProjectCostsCategory(CostCategoryBase):
     pass
 
 
@@ -37,7 +38,7 @@ class ProjectCosts(CostBase, ProjectBase):
     )
 
 
-class ProjectLabourCategory(CategoryBase):
+class ProjectLabourCategory(LabourCategoryBase):
     pass
 
 

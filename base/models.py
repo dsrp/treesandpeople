@@ -36,9 +36,29 @@ class CategoryBase(NamedBase):
         abstract = True
 
 
+class CostCategoryBase(CategoryBase):
+    """ ABS for cost categories. """
+
+    class Meta:
+        abstract = True
+        verbose_name = _('cost category')
+        verbose_name_plural = _('cost categories')
+
+
+class LabourCategoryBase(CategoryBase):
+    """ ABS for labour categories. """
+
+    class Meta:
+        abstract = True
+        verbose_name = _('labour category')
+        verbose_name_plural = _('labour categories')
+
+
 class CostBase(CategorizedYearBase):
     class Meta:
         abstract = True
+        verbose_name = _('costs')
+        verbose_name_plural = _('costs')
 
     amount = models.FloatField()
 
@@ -46,6 +66,8 @@ class CostBase(CategorizedYearBase):
 class LabourBase(CategorizedYearBase):
     class Meta:
         abstract = True
+        verbose_name = _('labour')
+        verbose_name_plural = _('labour')
 
     amount = models.FloatField()
 
@@ -53,5 +75,7 @@ class LabourBase(CategorizedYearBase):
 class ProductionBase(CategorizedYearBase):
     class Meta:
         abstract = True
+        verbose_name = _('production')
+        verbose_name_plural = _('productions')
 
     amount = models.FloatField()

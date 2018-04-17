@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import (
-    NamedBase, CostBase, LabourBase, ProductionBase, CategoryBase
+    NamedBase, CostBase, LabourBase, ProductionBase,
+    CostCategoryBase, LabourCategoryBase
 )
 from culture.models import CultureBase, Culture
 
@@ -23,14 +24,12 @@ class GardenBase(models.Model):
         return str(self.garden)
 
 
-class GardenCulture(GardenBase, CultureBase):
+class GardenCulture(CultureBase, GardenBase):
     area = models.FloatField(help_text=_('square meter'))
 
 
-class GardenCostsCategory(CategoryBase):
-    class Meta:
-        verbose_name = _('cost category')
-        verbose_name_plural = _('cost categories')
+class GardenCostsCategory(CostCategoryBase):
+    pass
 
 
 class GardenCosts(CostBase, GardenBase):
@@ -43,7 +42,7 @@ class GardenCosts(CostBase, GardenBase):
     )
 
 
-class GardenLabourCategory(CategoryBase):
+class GardenLabourCategory(LabourCategoryBase):
     pass
 
 
