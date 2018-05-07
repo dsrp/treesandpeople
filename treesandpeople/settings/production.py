@@ -34,5 +34,5 @@ RAVEN_CONFIG = {
     'dsn': env('RAVEN_DSN'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+    'release': raven.fetch_git_sha(BASE_DIR),  # noqa
 }
