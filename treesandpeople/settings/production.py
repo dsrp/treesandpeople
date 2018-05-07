@@ -2,10 +2,11 @@ import environ
 
 from .common import *  # noqa
 
-env = environ.Env(DEBUG=(bool, False),) # set default values and casting
+# set default values and casting
+env = environ.Env(DEBUG=(bool, False),)
 
-DEBUG = env('DEBUG') # False if not in os.environ
-TEMPLATE_DEBUG = DEBUG
+# False if not in os.environ
+DEBUG = env('DEBUG')
 
 DATABASES = {
     'default': env.db(),
@@ -20,3 +21,18 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 #     ('django.template.loaders.cached.Loader', [
 #         'django.template.loaders.filesystem.Loader', 'django.template.loaders.app_directories.Loader', ]),
 # ]
+
+# Raven
+import os  # noqa
+import raven  # noqa
+
+INSTALLED_APPS += [  # noqa
+    'raven.contrib.django.raven_compat',
+]
+
+RAVEN_CONFIG = {
+    'dsn': env('RAVEN_DSN'),
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+}

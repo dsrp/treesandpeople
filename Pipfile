@@ -13,6 +13,7 @@ gunicorn = "*"
 django-environ = "*"
 whitenoise = "*"
 brotlipy = "*"
+raven = "*"
 
 [dev-packages]
 
